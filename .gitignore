@@ -145,3 +145,6 @@ Thumbs.db
 
 # profiling data
 .prof
+
+# Dev stuff
+test-docs
