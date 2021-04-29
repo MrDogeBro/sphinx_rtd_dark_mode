@@ -1,0 +1,186 @@
+:root {
+  --dark-text-color: #c1c1c1;
+  --dark-link-color: #249ee8;
+}
+
+html[data-theme='dark'] body {
+  color: #bfbfbf;
+}
+
+html[data-theme='dark'] .wy-nav-content-wrap {
+  background-color: #101010;
+}
+
+html[data-theme='dark'] .wy-nav-content {
+  background-color: #141414;
+}
+
+html[data-theme='dark'] .section {
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'] .highlight {
+  background-color: #17181c;
+}
+
+html[data-theme='dark'] .highlight .nn {
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'] .highlight .nb {
+  color: #8bb8df;
+}
+
+html[data-theme='dark'] .highlight .kn,
+html[data-theme='dark'] .highlight .kc,
+html[data-theme='dark'] .highlight .k {
+  color: #41c2ea;
+}
+
+html[data-theme='dark'] .highlight .s1,
+html[data-theme='dark'] .highlight .s2 {
+  color: #b3e87f;
+}
+
+html[data-theme='dark'] .highlight .nt {
+  color: #ccb350;
+}
+
+html[data-theme='dark'] .highlight .c1 {
+  color: #686868;
+}
+
+html[data-theme='dark'] .rst-content div[class^='highlight'] {
+  border-color: #1a1a1a;
+}
+
+html[data-theme='dark'] .wy-nav-content a,
+html[data-theme='dark'] .wy-nav-content a:visited {
+  color: var(--dark-link-color);
+}
+
+html[data-theme='dark'] .btn-neutral {
+  background-color: #17181c !important;
+}
+
+html[data-theme='dark'] .btn-neutral:hover {
+  background-color: #101114 !important;
+}
+
+html[data-theme='dark'] .btn-neutral:visited {
+  color: #c1c1c1 !important;
+}
+
+html[data-theme='dark'] .btn {
+  box-shadow: none;
+}
+
+html[data-theme='dark'] footer {
+  color: #bdbdbd;
+}
+
+html[data-theme='dark'] .wy-nav-side {
+  background-color: #0d0d0d;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.current {
+  background-color: #141414;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.current > a,
+html[data-theme='dark'] .wy-menu-vertical li.on a {
+  background-color: #141415;
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l1.current > a,
+html[data-theme='dark'] .wy-menu-vertical li.current a {
+  border-color: #0b0c0d;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.current a {
+  color: #bbb;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.current a:hover {
+  background-color: #222;
+}
+
+html[data-theme='dark'] .wy-menu-vertical a:hover,
+html[data-theme='dark'] .wy-menu-vertical li.current > a:hover,
+html[data-theme='dark'] .wy-menu-vertical li.on a:hover {
+  background-color: #1e1e1e;
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l2.current > a,
+html[data-theme='dark']
+  .wy-menu-vertical
+  li.toctree-l2.current
+  li.toctree-l3
+  > a {
+  background-color: #18181a;
+}
+
+html[data-theme='dark'] .wy-side-nav-search {
+  background-color: #0b152d;
+}
+
+html[data-theme='dark'] .wy-side-nav-search .wy-dropdown > a,
+html[data-theme='dark'] .wy-side-nav-search > a {
+  color: #ddd;
+}
+
+html[data-theme='dark'] .wy-side-nav-search input[type='text'] {
+  border-color: #111;
+  background-color: #141414;
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'] .theme-switcher {
+  background-color: #0b0c0d;
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'].writer-html4 .rst-content dl:not(.docutils) > dt,
+html[data-theme='dark'].writer-html5
+  .rst-content
+  dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)
+  > dt {
+  background-color: #0b0b0b;
+  color: #007dce;
+  border-color: #282828;
+}
+
+html[data-theme='dark'] .rst-content code,
+html[data-theme='dark'] .rst-content tt {
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'].writer-html4
+  .rst-content
+  dl:not(.docutils)
+  dl:not(.field-list)
+  > dt,
+html[data-theme='dark'].writer-html5
+  .rst-content
+  dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)
+  dl:not(.field-list)
+  > dt {
+  background-color: #0f0f0f;
+  color: #959595;
+  border-color: #2b2b2b;
+}
+
+html[data-theme='dark'] .rst-content code,
+html[data-theme='dark'] .rst-content tt,
+html[data-theme='dark'] code {
+  background-color: #2d2d2d;
+  border-color: #1c1c1c;
+}
+
+html[data-theme='dark'] .rst-content code.xref,
+html[data-theme='dark'] .rst-content tt.xref,
+html[data-theme='dark'] a .rst-content code,
+html[data-theme='dark'] a .rst-content tt {
+  color: #cecece;
+}
