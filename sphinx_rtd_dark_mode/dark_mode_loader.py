@@ -34,11 +34,17 @@ class DarkModeLoader:
     def load_default_theme(self, default_theme: str):
         if not self.config.html_js_files:
             self.config.html_js_files = [
-                "dark_mode_js/default_{default_theme}.js".format(default_theme=default_theme),
+                "dark_mode_js/default_{default_theme}.js".format(
+                    default_theme=default_theme
+                ),
                 "dark_mode_js/theme_switcher.js",
             ]
         else:
-            self.config.html_js_files.append("dark_mode_js/default_{default_theme}.js".format(default_theme=default_theme))
+            self.config.html_js_files.append(
+                "dark_mode_js/default_{default_theme}.js".format(
+                    default_theme=default_theme
+                )
+            )
             self.config.html_js_files.append("dark_mode_js/theme_switcher.js")
 
     def load_css(self):
