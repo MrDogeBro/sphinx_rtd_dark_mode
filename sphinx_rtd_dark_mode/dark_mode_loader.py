@@ -37,15 +37,3 @@ class DarkModeLoader:
             "dark_mode_css/custom.css",
             "dark_mode_css/dark.css",
         ]
-
-
-def setup(app):
-    app.add_config_value("default_dark_mode", True, "html")
-
-    app.connect("config-inited", DarkModeLoader().configure)
-
-    return {
-        "version": "1.0.0",
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
