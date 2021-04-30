@@ -15,6 +15,15 @@ setuptools.setup(
     url="https://github.com/MrDogeBro/sphinx_rtd_dark_mode",
     download_url=f"https://github.com/MrDogeBro/sphinx_rtd_dark_mode/archive/v{sphinx_rtd_dark_mode.__version__}.tar.gz",
     packages=setuptools.find_packages(),
+    package_data={
+        "sphinx_rtd_dark_mode": [
+            "static/dark_mode_css/custom.css",
+            "static/dark_mode_css/dark.css",
+            "static/dark_mode_js/theme_switcher.js",
+            "static/dark_mode_js/default_light.js",
+            "static/dark_mode_js/default_dark.js",
+        ]
+    },
     license=sphinx_rtd_dark_mode.__license__,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -29,5 +38,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.4",
-    install_requires=["sphinx-rtd-theme"]
+    install_requires=["sphinx-rtd-theme"],
 )
