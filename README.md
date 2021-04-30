@@ -52,7 +52,7 @@ in light mode when they first visit the site.
 default_dark_mode = True
 
 # user starts in light mode
-default_dark_mode = True
+default_dark_mode = False
 ```
 
 ## License
