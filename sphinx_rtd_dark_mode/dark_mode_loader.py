@@ -56,4 +56,3 @@ class DarkModeLoader:
         else:
             self.config.html_css_files.append("dark_mode_css/custom.css")
             self.config.html_css_files.append("dark_mode_css/dark.css")
-        print(self.config.html_css_files)
