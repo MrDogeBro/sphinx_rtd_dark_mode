@@ -9,7 +9,7 @@ theme for Sphinx.
 __title__ = "sphinx-rtd-dark-mode"
 __description__ = "Dark mode for the Sphinx Read the Docs theme."
 __author__ = "MrDogeBro"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __license__ = "MIT"
 
 from sphinx_rtd_dark_mode.dark_mode_loader import DarkModeLoader
@@ -21,7 +21,7 @@ def setup(app):
     app.connect("config-inited", DarkModeLoader().configure)
 
     return {
-        "version": "1.0.0",
+        "version": __version__,
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
