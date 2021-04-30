@@ -17,7 +17,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     package_data={
         "sphinx_rtd_dark_mode": [
-            "static/dark_mode_css/custom.css",
+            "static/dark_mode_css/general.css",
             "static/dark_mode_css/dark.css",
             "static/dark_mode_js/theme_switcher.js",
             "static/dark_mode_js/default_light.js",
