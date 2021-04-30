@@ -48,12 +48,16 @@ class DarkModeLoader:
             self.config.html_js_files.append("dark_mode_js/theme_switcher.js")
 
     def load_css(self):
+        if "css_files" in self.config.html_context:
+            self.config.html_context["css_files"].append("_static/dark_mode_css/general.css")
+            self.config.html_context["css_files"].append("_static/dark_mode_css/dark.css")
+            return
+
         if not self.config.html_css_files:
             self.config.html_css_files = [
-                "dark_mode_css/custom.css",
+                "dark_mode_css/general.css",
                 "dark_mode_css/dark.css",
             ]
         else:
-            self.config.html_css_files.append("dark_mode_css/custom.css")
+            self.config.html_css_files.append("dark_mode_css/general.css")
             self.config.html_css_files.append("dark_mode_css/dark.css")
-        print(self.config.html_css_files)
