@@ -15,10 +15,10 @@ terminal or command prompt.
 
 ```bash
 # Linux/OSX
-python3 -m pip install content-filter
+python3 -m pip install sphinx-rtd-dark-mode
 
 # Windows
-py -3 -m pip install content-filter
+py -3 -m pip install sphinx-rtd-dark-mode
 ```
 
 ## Using the Extension
