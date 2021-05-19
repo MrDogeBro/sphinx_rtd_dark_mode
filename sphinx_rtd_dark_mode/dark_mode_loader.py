@@ -4,9 +4,11 @@ from pathlib import Path
 class DarkModeLoader:
     def __init__(self):
         self.config = None
+        self.app = None
 
     def configure(self, app, config):
         self.config = config
+        self.app = app
 
         self.check_sphinx_theme()
 
