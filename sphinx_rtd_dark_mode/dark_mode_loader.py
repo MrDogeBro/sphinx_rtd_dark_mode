@@ -19,12 +19,16 @@ class DarkModeLoader:
                 str(Path.joinpath(Path(__file__).resolve().parent, "static"))
             )
 
+        self.set_default_theme()
         self.load_theme_switcher()
         self.load_css()
 
     def check_sphinx_theme(self):
         if not self.config.html_theme == "sphinx_rtd_theme":
             self.config.html_theme = "sphinx_rtd_theme"
+
+    def set_default_theme(self):
+        pass
 
     def load_theme_switcher(self):
         if not self.config.html_js_files:
