@@ -455,3 +455,7 @@ html[data-theme='dark']
 html[data-theme='dark'] .wy-alert.wy-alert-danger .wy-alert-title {
   background-color: #b9372b;
 }
+
+html[data-theme='dark'] .wy-nav-top {
+  background-color: #0b152d;
+}

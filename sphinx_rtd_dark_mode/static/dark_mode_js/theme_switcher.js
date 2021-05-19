@@ -3,7 +3,7 @@ const createThemeSwitcher = () => {
   btn.className = 'theme-switcher';
   btn.id = 'themeSwitcher';
   btn.innerHTML =
-    '<i id=themeMoon class="fas fa-moon"></i><i id=themeSun class="fas fa-sun"></i>';
+    '<i id=themeMoon class="fa fa-moon-o"></i><i id=themeSun class="fa fa-sun-o"></i>';
   document.body.appendChild(btn);
 
   if (localStorage.getItem('theme') === 'dark') $('#themeMoon').hide(0);
@@ -11,11 +11,7 @@ const createThemeSwitcher = () => {
 };
 
 $(document).ready(() => {
-  $('head').append(
-    '<script src="https://kit.fontawesome.com/ea3a6b8494.js" crossorigin="anonymous"></script>'
-  );
   createThemeSwitcher();
-
   $('#themeSwitcher').click(switchTheme);
 
   $('footer').html(
