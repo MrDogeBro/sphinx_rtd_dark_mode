@@ -19,12 +19,7 @@ class DarkModeLoader:
                 str(Path.joinpath(Path(__file__).resolve().parent, "static"))
             )
 
-        if not self.config.default_dark_mode:
-            self.load_default_theme("light")
-            self.load_css()
-            return
-
-        self.load_theme_switcher("dark")
+        self.load_theme_switcher()
         self.load_css()
 
     def check_sphinx_theme(self):
