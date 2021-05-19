@@ -11,11 +11,7 @@ const createThemeSwitcher = () => {
 };
 
 $(document).ready(() => {
-  $('head').append(
-    '<script src="https://kit.fontawesome.com/ea3a6b8494.js" crossorigin="anonymous"></script>'
-  );
   createThemeSwitcher();
-
   $('#themeSwitcher').click(switchTheme);
 
   $('footer').html(
