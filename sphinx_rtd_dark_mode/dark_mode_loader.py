@@ -30,7 +30,12 @@ class DarkModeLoader:
             self.config.html_theme = "sphinx_rtd_theme"
 
     def set_default_theme(self):
-        pass
+        with open(
+            Path.joinpath(Path(__file__).resolve().parent, "default_theme.js")
+        ) as f:
+            js_str = f.read()
+
+        self.app.add_js_file(None, body=js_str.replace("{default_theme}", "light"))
 
     def load_theme_switcher(self):
         if not self.config.html_js_files:
@@ -42,8 +47,12 @@ class DarkModeLoader:
 
     def load_css(self):
         if "css_files" in self.config.html_context:
-            self.config.html_context["css_files"].append("_static/dark_mode_css/general.css")
-            self.config.html_context["css_files"].append("_static/dark_mode_css/dark.css")
+            self.config.html_context["css_files"].append(
+                "_static/dark_mode_css/general.css"
+            )
+            self.config.html_context["css_files"].append(
+                "_static/dark_mode_css/dark.css"
+            )
             return
 
         if not self.config.html_css_files:
