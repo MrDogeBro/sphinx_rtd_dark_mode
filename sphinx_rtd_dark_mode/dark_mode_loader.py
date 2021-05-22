@@ -31,16 +31,23 @@ class DarkModeLoader:
 
     def set_default_theme(self):
         default_theme = "dark"
+        default_theme_enabled = "true"
 
         if not self.config.default_dark_mode:
             default_theme = "light"
+            default_theme_enabled = "false"
 
         with open(
             Path.joinpath(Path(__file__).resolve().parent, "default_theme.js")
         ) as f:
             js_str = f.read()
 
-        self.app.add_js_file(None, body=js_str.replace("{default_theme}", default_theme))
+        self.app.add_js_file(
+            None,
+            body=js_str.replace("{default_theme}", default_theme).replace(
+                "{default_theme_enabled}", default_theme_enabled
+            ),
+        )
 
     def load_theme_switcher(self):
         if not self.config.html_js_files:
