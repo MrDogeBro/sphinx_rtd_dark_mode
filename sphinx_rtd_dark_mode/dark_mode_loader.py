@@ -53,18 +53,13 @@ class DarkModeLoader:
     def load_css(self):
         if "css_files" in self.config.html_context:
             self.config.html_context["css_files"].append(
-                "_static/dark_css/general.scss"
-            )
-            self.config.html_context["css_files"].append(
-                "_static/dark_css/dark.scss"
+                "_static/dark_css/theming.scss"
             )
             return
 
         if not self.config.html_css_files:
             self.config.html_css_files = [
-                "dark_css/general.scss",
-                "dark_css/dark.scss",
+                "dark_css/theming.scss",
             ]
         else:
-            self.config.html_css_files.append("dark_css/general.scss")
-            self.config.html_css_files.append("dark_css/dark.scss")
+            self.config.html_css_files.append("dark_css/theming.scss")
