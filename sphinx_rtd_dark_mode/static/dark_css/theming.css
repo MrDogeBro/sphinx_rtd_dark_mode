@@ -1,6 +1,7 @@
 @import 'general.css';
 
 @import 'dark.css';
+@import 'slate.css';
 
 html[data-theme-enabled='true'] body {
   color: var(--dark-text-secondary);
