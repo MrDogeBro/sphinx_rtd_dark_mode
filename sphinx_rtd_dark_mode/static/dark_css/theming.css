@@ -3,24 +3,31 @@
 @import 'dark.scss';
 
 :root {
-  --dark-text-color: #c1c1c1;
-  --dark-link-color: #249ee8;
+  --dark-text: #c1c1c1;
+  --dark-link: #249ee8;
+  --dark-bkg: #141414;
+  --dark-bkg-overflow: #101010;
 }
+
+$dark-text: var(--dark-text);
+$dark-link: var(--dark-link);
+$dark-bkg: var(--dark-bkg);
+$dark-bkg-overflow: var(--dark-bkg-overflow);
 
 html[data-theme-enabled='true'] body {
   color: #bfbfbf;
 }
 
 html[data-theme-enabled='true'] .wy-nav-content-wrap {
-  background-color: #101010;
+  background-color: $dark-bkg-overflow;
 }
 
 html[data-theme-enabled='true'] .wy-nav-content {
-  background-color: #141414;
+  background-color: #{$dark-bkg};
 }
 
 html[data-theme-enabled='true'] .section {
-  color: var(--dark-text-color);
+  color: $dark-text;
 }
 
 html[data-theme-enabled='true'] .highlight {
@@ -28,7 +35,7 @@ html[data-theme-enabled='true'] .highlight {
 }
 
 html[data-theme-enabled='true'] .highlight .nn {
-  color: var(--dark-text-color);
+  color: $dark-text;
 }
 
 html[data-theme-enabled='true'] .highlight .nb {
@@ -60,7 +67,7 @@ html[data-theme-enabled='true'] .rst-content div[class^='highlight'] {
 
 html[data-theme-enabled='true'] .wy-nav-content a,
 html[data-theme-enabled='true'] .wy-nav-content a:visited {
-  color: var(--dark-link-color);
+  color: $dark-link-color;
 }
 
 html[data-theme-enabled='true'] .btn-neutral {
@@ -88,13 +95,13 @@ html[data-theme-enabled='true'] .wy-nav-side {
 }
 
 html[data-theme-enabled='true'] .wy-menu-vertical li.current {
-  background-color: #141414;
+  background-color: $dark-bkg;
 }
 
 html[data-theme-enabled='true'] .wy-menu-vertical li.current > a,
 html[data-theme-enabled='true'] .wy-menu-vertical li.on a {
   background-color: #141415;
-  color: var(--dark-text-color);
+  color: $dark-text;
 }
 
 html[data-theme-enabled='true'] .wy-menu-vertical li.toctree-l1.current > a,
@@ -136,13 +143,13 @@ html[data-theme-enabled='true'] .wy-side-nav-search > a {
 
 html[data-theme-enabled='true'] .wy-side-nav-search input[type='text'] {
   border-color: #111;
-  background-color: #141414;
-  color: var(--dark-text-color);
+  background-color: $dark-bkg;
+  color: $dark-text;
 }
 
 html[data-theme-enabled='true'] .theme-switcher {
   background-color: #0b0c0d;
-  color: var(--dark-text-color);
+  color: $dark-text;
 }
 
 html[data-theme-enabled='true'].writer-html4 .rst-content dl:not(.docutils) > dt,
@@ -157,7 +164,7 @@ html[data-theme-enabled='true'].writer-html5
 
 html[data-theme-enabled='true'] .rst-content code,
 html[data-theme-enabled='true'] .rst-content tt {
-  color: var(--dark-text-color);
+  color: $dark-text;
 }
 
 html[data-theme-enabled='true'].writer-html4
