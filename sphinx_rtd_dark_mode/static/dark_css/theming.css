@@ -1,6 +1,6 @@
-@import 'general.scss';
+@import 'general.css';
 
-@import 'dark.scss';
+@import 'dark.css';
 
 :root {
   --dark-text: #c1c1c1;
