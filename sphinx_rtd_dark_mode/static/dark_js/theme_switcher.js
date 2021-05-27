@@ -1,14 +1,18 @@
 const createThemeSwitcher = () => {
   let btn = document.createElement('BUTTON');
-  btn.className = 'theme-switcher';
-  btn.id = 'themeSwitcher';
+  btn.className = 'theme-switcher-btn';
+  btn.id = 'themeSwitcherBtn';
   btn.innerHTML = '<i class="fa fa-paint-brush"></i>';
   document.body.appendChild(btn);
+
+  let themes = document.createElement('DIV');
+  themes.className = 'theme-switcher';
+  themes.id = 'themeSwitcher';
 };
 
 $(document).ready(() => {
   createThemeSwitcher();
-  $('#themeSwitcher').click(switchTheme);
+  $('#themeSwitcherBtn').click(switchTheme);
 
   $('footer').html(
     $('footer').html() +
