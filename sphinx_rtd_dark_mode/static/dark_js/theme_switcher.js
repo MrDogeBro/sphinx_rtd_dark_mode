@@ -66,15 +66,3 @@ const switchTheme = (e) => {
     return document.documentElement.setAttribute('data-theme-enabled', 'false');
   document.documentElement.setAttribute('data-theme-enabled', 'true');
 };
-
-// const switchTheme = () => {
-// if (localStorage.getItem('theme') === 'dark') {
-// localStorage.setItem('theme', 'light');
-// document.documentElement.setAttribute('data-theme', 'light');
-// document.documentElement.setAttribute('data-theme-enabled', 'false');
-// } else {
-// localStorage.setItem('theme', 'dark');
-// document.documentElement.setAttribute('data-theme', 'dark');
-// document.documentElement.setAttribute('data-theme-enabled', 'true');
-// }
-// };
