@@ -23,6 +23,8 @@ const createThemeSwitcher = () => {
   }
 
   themes.innerHTML = themeSwitcherHtml;
+  document.body.appendChild(themes);
+  $('#themeSwitcher').hide();
 };
 
 $(document).ready(() => {
