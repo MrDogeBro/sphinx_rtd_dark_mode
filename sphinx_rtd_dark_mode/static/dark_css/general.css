@@ -15,7 +15,7 @@ input[type='week'] {
   box-shadow: none;
 }
 
-.theme-switcher {
+.theme-switcher-btn {
   border-radius: 50%;
   position: fixed;
   right: 1.6em;
