@@ -4,6 +4,7 @@ const capitalize = (str) => {
 
 const createThemeSwitcher = () => {
   const availableThemes = JSON.parse(sessionStorage.getItem('availableThemes'));
+  let themeIDs = [];
 
   let btn = document.createElement('BUTTON');
   btn.className = 'theme-switcher-btn';
@@ -18,18 +19,31 @@ const createThemeSwitcher = () => {
 
   for (i = 0; i < availableThemes.length; i++) {
     let themeName = capitalize(availableThemes[i]);
+    let themeID = 'theme' + themeName;
 
-    themeSwitcherHtml += '<p id="theme' + themeName + '">' + themeName + '</p>';
+    themeSwitcherHtml +=
+      '<p data-name="' +
+      availableThemes[i] +
+      '" id="' +
+      themeID +
+      '">' +
+      themeName +
+      '</p>';
+    themeIDs.push(themeID);
   }
 
   themes.innerHTML = themeSwitcherHtml;
   document.body.appendChild(themes);
   $('#themeSwitcher').hide();
+
+  for (i = 0; i < themeIDs.length; i++) {
+    $('#' + themeIDs[i]).click(switchTheme);
+  }
 };
 
 $(document).ready(() => {
   createThemeSwitcher();
-  $('#themeSwitcherBtn').click(switchTheme);
+  $('#themeSwitcherBtn').click(toggleThemeSwitcher);
 
   $('footer').html(
     $('footer').html() +
@@ -37,14 +51,30 @@ $(document).ready(() => {
   );
 });
 
-const switchTheme = () => {
-  if (localStorage.getItem('theme') === 'dark') {
-    localStorage.setItem('theme', 'light');
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.documentElement.setAttribute('data-theme-enabled', 'false');
-  } else {
-    localStorage.setItem('theme', 'dark');
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.documentElement.setAttribute('data-theme-enabled', 'true');
-  }
+const toggleThemeSwitcher = () => {
+  $('#themeSwitcher').toggle();
 };
+
+const switchTheme = (e) => {
+  const theme = e.target.dataset.name;
+
+  localStorage.setItem('theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
+  toggleThemeSwitcher();
+
+  if (theme === 'light')
+    return document.documentElement.setAttribute('data-theme-enabled', 'false');
+  document.documentElement.setAttribute('data-theme-enabled', 'true');
+};
+
+// const switchTheme = () => {
+// if (localStorage.getItem('theme') === 'dark') {
+// localStorage.setItem('theme', 'light');
+// document.documentElement.setAttribute('data-theme', 'light');
+// document.documentElement.setAttribute('data-theme-enabled', 'false');
+// } else {
+// localStorage.setItem('theme', 'dark');
+// document.documentElement.setAttribute('data-theme', 'dark');
+// document.documentElement.setAttribute('data-theme-enabled', 'true');
+// }
+// };
