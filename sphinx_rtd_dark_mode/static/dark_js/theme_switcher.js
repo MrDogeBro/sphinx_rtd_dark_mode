@@ -4,6 +4,7 @@ const capitalize = (str) => {
 
 const createThemeSwitcher = () => {
   const availableThemes = JSON.parse(sessionStorage.getItem('availableThemes'));
+  const defaultTheme = sessionStorage.getItem('defaultTheme');
   let themeIDs = [];
 
   let btn = document.createElement('BUTTON');
@@ -18,8 +19,10 @@ const createThemeSwitcher = () => {
   themeSwitcherHtml = '';
 
   for (i = 0; i < availableThemes.length; i++) {
-    let themeName = capitalize(availableThemes[i]);
-    let themeID = 'theme' + themeName;
+    let themeName =
+      capitalize(availableThemes[i]) +
+      (defaultTheme === availableThemes[i] ? ' (default)' : '');
+    let themeID = 'theme' + capitalize(availableThemes[i]);
 
     themeSwitcherHtml +=
       '<p data-name="' +
