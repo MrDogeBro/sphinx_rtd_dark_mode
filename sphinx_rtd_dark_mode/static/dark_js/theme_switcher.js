@@ -8,6 +8,7 @@ const createThemeSwitcher = () => {
   let themes = document.createElement('DIV');
   themes.className = 'theme-switcher';
   themes.id = 'themeSwitcher';
+  themes.innerHTML = '';
 };
 
 $(document).ready(() => {
