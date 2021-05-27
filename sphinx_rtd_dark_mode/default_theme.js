@@ -1,6 +1,7 @@
 const loadTheme = () => {
   let theme = localStorage.getItem('theme');
   sessionStorage.setItem('availableThemes', '{available_themes}');
+  sessionStorage.setItem('defaultTheme', '{default_theme}');
 
   if (theme !== null) {
     if (theme !== 'light')
