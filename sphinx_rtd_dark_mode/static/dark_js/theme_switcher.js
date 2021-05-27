@@ -54,16 +54,25 @@ $(document).ready(() => {
   );
 });
 
-const toggleThemeSwitcher = () => {
+$(document).click((e) => {
+  if (e.target.id === 'themeSwitcher') return;
+  if ($('#themeSwitcher').is(':hidden')) return;
+
+  $('#themeSwitcher').hide();
+});
+
+const toggleThemeSwitcher = (e) => {
+  e.stopPropagation();
   $('#themeSwitcher').toggle();
 };
 
 const switchTheme = (e) => {
+  e.stopPropagation();
   const theme = e.target.dataset.name;
 
   localStorage.setItem('theme', theme);
   document.documentElement.setAttribute('data-theme', theme);
-  toggleThemeSwitcher();
+  $('#themeSwitcher').hide();
 
   if (theme === 'light')
     return document.documentElement.setAttribute('data-theme-enabled', 'false');
