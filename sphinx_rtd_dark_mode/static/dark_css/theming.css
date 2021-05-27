@@ -620,27 +620,27 @@ html[data-theme-enabled='true'] .wy-nav-top {
   background-color: var(--dark-sidebar-search-section);
 }
 
-html[data-theme='dark'] .rst-content table.docutils thead,
-html[data-theme='dark'] .rst-content table.field-list thead,
-html[data-theme='dark'] .wy-table thead {
+html[data-theme-enabled='true'] .rst-content table.docutils thead,
+html[data-theme-enabled='true'] .rst-content table.field-list thead,
+html[data-theme-enabled='true'] .wy-table thead {
   color: var(--dark-text);
 }
 
-html[data-theme='dark']
+html[data-theme-enabled='true']
   .rst-content
   table.docutils:not(.field-list)
   tr:nth-child(2n-1)
   td,
-html[data-theme='dark'] .wy-table-backed,
-html[data-theme='dark'] .wy-table-odd td,
-html[data-theme='dark'] .wy-table-striped tr:nth-child(2n-1) td {
+html[data-theme-enabled='true'] .wy-table-backed,
+html[data-theme-enabled='true'] .wy-table-odd td,
+html[data-theme-enabled='true'] .wy-table-striped tr:nth-child(2n-1) td {
   background-color: var(--dark-bkg-secondary);
 }
 
-html[data-theme='dark'] .rst-content table.docutils td,
-html[data-theme='dark'] .wy-table-bordered-all td,
-html[data-theme='dark'].writer-html5 .rst-content table.docutils th,
-html[data-theme='dark'] .rst-content table.docutils,
-html[data-theme='dark'] .wy-table-bordered-all {
+html[data-theme-enabled='true'] .rst-content table.docutils td,
+html[data-theme-enabled='true'] .wy-table-bordered-all td,
+html[data-theme-enabled='true'].writer-html5 .rst-content table.docutils th,
+html[data-theme-enabled='true'] .rst-content table.docutils,
+html[data-theme-enabled='true'] .wy-table-bordered-all {
   border-color: var(--dark-table-border);
 }
