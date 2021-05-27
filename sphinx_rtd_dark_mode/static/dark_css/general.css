@@ -32,6 +32,26 @@ input[type='week'] {
   transition: all 0.3s ease-in-out;
 }
 
+.theme-switcher {
+  position: fixed;
+  right: 1.6em;
+  bottom: 5.2em;
+  z-index: 3;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 2px;
+  background-color: #fcfcfc;
+  -webkit-box-shadow: 0px 3px 14px 4px rgba(0, 0, 0, 0.62);
+  box-shadow: 0px 3px 14px 4px rgba(0, 0, 0, 0.62);
+  color: #404040;
+  transition: all 0.3s ease-in-out;
+}
+
+.theme-switcher p {
+  padding: 0;
+  margin: 5px 0;
+}
+
 body,
 .wy-nav-content-wrap,
 .wy-nav-content,
