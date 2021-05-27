@@ -45,9 +45,12 @@ class DarkModeLoader:
 
         self.app.add_js_file(
             None,
-            body=js_str.replace("{default_theme}", default_theme).replace(
-                "{default_theme_enabled}", default_theme_enabled
-                ).replace("{available_themes}", "[\"{}\"]".format("\", \"".join(map(str, available_themes)))),
+            body=js_str.replace("{default_theme}", default_theme)
+            .replace("{default_theme_enabled}", default_theme_enabled)
+            .replace(
+                "{available_themes}",
+                '["{}"]'.format('", "'.join(map(str, available_themes))),
+            ),
         )
 
     def load_theme_switcher(self):
@@ -60,9 +63,7 @@ class DarkModeLoader:
 
     def load_css(self):
         if "css_files" in self.config.html_context:
-            self.config.html_context["css_files"].append(
-                "_static/dark_css/theming.css"
-            )
+            self.config.html_context["css_files"].append("_static/dark_css/theming.css")
             return
 
         if not self.config.html_css_files:
