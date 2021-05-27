@@ -1,4 +1,10 @@
+const capitalize = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 const createThemeSwitcher = () => {
+  const availableThemes = JSON.parse(sessionStorage.getItem('availableThemes'));
+
   let btn = document.createElement('BUTTON');
   btn.className = 'theme-switcher-btn';
   btn.id = 'themeSwitcherBtn';
@@ -8,14 +14,20 @@ const createThemeSwitcher = () => {
   let themes = document.createElement('DIV');
   themes.className = 'theme-switcher';
   themes.id = 'themeSwitcher';
-  themes.innerHTML = '';
+  themeSwitcherHtml = '';
+
+  for (i = 0; i < availableThemes.length; i++) {
+    let themeName = capitalize(availableThemes[i]);
+
+    themeSwitcherHtml += '<p id="theme' + themeName + '">' + themeName + '</p>';
+  }
+
+  themes.innerHTML = themeSwitcherHtml;
 };
 
 $(document).ready(() => {
   createThemeSwitcher();
   $('#themeSwitcherBtn').click(switchTheme);
-
-  const availableThemes = JSON.parse(sessionStorage.getItem('availableThemes'));
 
   $('footer').html(
     $('footer').html() +
