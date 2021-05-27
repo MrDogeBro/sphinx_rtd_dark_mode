@@ -52,6 +52,10 @@ input[type='week'] {
   margin: 5px 0;
 }
 
+.theme-switcher p:hover {
+  cursor: pointer;
+}
+
 body,
 .wy-nav-content-wrap,
 .wy-nav-content,
