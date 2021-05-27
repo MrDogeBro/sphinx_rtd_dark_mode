@@ -32,6 +32,7 @@ class DarkModeLoader:
     def set_default_theme(self):
         default_theme = "dark"
         default_theme_enabled = "true"
+        available_themes = ["dark", "light"]
 
         if not self.config.default_dark_mode:
             default_theme = "light"
@@ -46,7 +47,7 @@ class DarkModeLoader:
             None,
             body=js_str.replace("{default_theme}", default_theme).replace(
                 "{default_theme_enabled}", default_theme_enabled
-            ),
+                ).replace("{available_themes}", "[\"{}\"]".format("\", \"".join(map(str, available_themes)))),
         )
 
     def load_theme_switcher(self):
