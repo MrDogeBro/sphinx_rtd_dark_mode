@@ -3,6 +3,7 @@
   --dark-link: #249ee8;
   --dark-bkg: #141414;
   --dark-text-secondary: #bfbfbf;
+  --dark-bkg-secondary: #181818;
   --dark-bkg-overflow: #101010;
   --dark-code-bkg: #17181c;
   --dark-code-highlight-1: #8bb8df;
@@ -43,4 +44,5 @@
   --dark-danger-bkg: #82231a;
   --dark-danger-header-bkg: #b9372b;
   --dark-theme-switcher-bkg: #0b0c0d;
+  --dark-table-border: #262626;
 }
