@@ -15,6 +15,8 @@ $(document).ready(() => {
   createThemeSwitcher();
   $('#themeSwitcherBtn').click(switchTheme);
 
+  const availableThemes = JSON.parse(sessionStorage.getItem('availableThemes'));
+
   $('footer').html(
     $('footer').html() +
       'Dark theme provided by <a href="https://github.com/MrDogeBro">MrDogeBro</a>.'
