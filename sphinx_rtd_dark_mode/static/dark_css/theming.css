@@ -136,7 +136,8 @@ html[data-theme-enabled='true'] .wy-side-nav-search input[type='text'] {
   color: var(--dark-text);
 }
 
-html[data-theme-enabled='true'] .theme-switcher {
+html[data-theme-enabled='true'] .theme-switcher,
+html[data-theme-enabled='true'] .theme-switcher-btn {
   background-color: var(--dark-theme-switcher-bkg);
   color: var(--dark-text);
 }
