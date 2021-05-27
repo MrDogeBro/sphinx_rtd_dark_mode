@@ -16,7 +16,7 @@ $(document).ready(() => {
 
   $('footer').html(
     $('footer').html() +
-      'Dark theme provided by <a href="http://mrdogebro.com">MrDogeBro</a>.'
+      'Dark theme provided by <a href="https://github.com/MrDogeBro">MrDogeBro</a>.'
   );
 });
 
