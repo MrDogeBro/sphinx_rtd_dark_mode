@@ -118,7 +118,7 @@ html[data-theme-enabled='true']
   li.toctree-l2.current
   li.toctree-l3
   > a {
-  background-color: var(--dark-subselected-bkg);
+  background-color: var(--dark-sidebar-subselected-bkg);
 }
 
 html[data-theme-enabled='true'] .wy-side-nav-search {
