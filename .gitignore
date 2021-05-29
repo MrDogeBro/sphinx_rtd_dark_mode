@@ -148,3 +148,6 @@ Thumbs.db
 
 # Dev stuff
 test-docs
+
+# Doc stuff
+*_build
