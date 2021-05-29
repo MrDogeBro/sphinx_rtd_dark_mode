@@ -1,6 +1,8 @@
-test-build
-==========
+Preview Build
+=============
 
 .. toctree::
+   :maxdepth: 2
 
-    test
+   test
+   api
