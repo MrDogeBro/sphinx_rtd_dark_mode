@@ -32,7 +32,7 @@ class DarkModeLoader:
     def set_default_theme(self):
         default_theme = "dark"
         default_theme_enabled = "true"
-        available_themes = ["dark", "slate", "light"]
+        available_themes = ["dark", "super-dark", "slate", "light"]
 
         if not self.config.default_dark_mode:
             default_theme = "light"

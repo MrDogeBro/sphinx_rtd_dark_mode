@@ -1,6 +1,7 @@
 @import 'general.css';
 
 @import 'dark.css';
+@import 'super-dark.css';
 @import 'slate.css';
 
 html[data-theme-enabled='true'] body {
