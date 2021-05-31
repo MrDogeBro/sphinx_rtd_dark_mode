@@ -1,4 +1,5 @@
 from pathlib import Path
+from json import dumps
 
 
 class DarkModeLoader:
@@ -32,7 +33,12 @@ class DarkModeLoader:
     def set_default_theme(self):
         default_theme = "dark"
         default_theme_enabled = "true"
-        available_themes = ["dark", "super-dark", "slate", "light"]
+        available_themes = [
+            {"name": "dark", "displayName": "Dark"},
+            {"name": "super-dark", "displayName": "Super Dark"},
+            {"name": "slate", "displayName": "Slate"},
+            {"name": "light", "displayName": "Light"},
+        ]
 
         if not self.config.default_dark_mode:
             default_theme = "light"
@@ -47,10 +53,7 @@ class DarkModeLoader:
             None,
             body=js_str.replace("{default_theme}", default_theme)
             .replace("{default_theme_enabled}", default_theme_enabled)
-            .replace(
-                "{available_themes}",
-                '["{}"]'.format('", "'.join(map(str, available_themes))),
-            ),
+            .replace("{available_themes}", dumps(available_themes)),
         )
 
     def load_theme_switcher(self):

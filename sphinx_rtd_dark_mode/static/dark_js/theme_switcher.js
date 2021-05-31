@@ -1,7 +1,3 @@
-const capitalize = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
-
 const createThemeSwitcher = () => {
   const availableThemes = JSON.parse(sessionStorage.getItem('availableThemes'));
   const defaultTheme = sessionStorage.getItem('defaultTheme');
@@ -20,13 +16,13 @@ const createThemeSwitcher = () => {
 
   for (i = 0; i < availableThemes.length; i++) {
     let themeName =
-      capitalize(availableThemes[i]) +
-      (defaultTheme === availableThemes[i] ? ' (default)' : '');
-    let themeID = 'theme' + capitalize(availableThemes[i]);
+      availableThemes[i].displayName +
+      (defaultTheme === availableThemes[i].name ? ' (default)' : '');
+    let themeID = 'theme' + availableThemes[i].displayName.replace(/\s+/g, '');
 
     themeSwitcherHtml +=
       '<p data-name="' +
-      availableThemes[i] +
+      availableThemes[i].name +
       '" id="' +
       themeID +
       '">' +
