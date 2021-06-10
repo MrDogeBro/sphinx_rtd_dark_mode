@@ -1,11 +1,11 @@
-:root[data-theme='super-dark'] {
-  --dark-text: #c1c1c1;
+:root[data-theme='dark'] {
+  --dark-text: #ffffff;
   --dark-link: #249ee8;
-  --dark-bkg: #141414;
+  --dark-bkg: #333339;
   --dark-text-secondary: #bfbfbf;
   --dark-bkg-secondary: #181818;
   --dark-bkg-overflow: #101010;
-  --dark-code-bkg: #17181c;
+  --dark-code-bkg: #252529;
   --dark-code-highlight-1: #8bb8df;
   --dark-code-highlight-2: #41c2ea;
   --dark-code-highlight-3: #b3e87f;
@@ -16,14 +16,14 @@
   --dark-btn-hover: #101114;
   --dark-btn-txt: #c1c1c1;
   --dark-footer-txt: #bdbdbd;
-  --dark-sidebar: #0d0d0d;
+  --dark-sidebar: #1a1a1f;
   --dark-sidebar-bkg-hover: #1e1e1e;
   --dark-sidebar-selected-txt: #bbbbbb;
   --dark-sidebar-selected-header-bkg: #141415;
   --dark-sidebar-selected-bkg-hover: #222222;
   --dark-sidebar-subselected-bkg: #18181a;
   --dark-sidebar-border: #0b0c0d;
-  --dark-sidebar-search-section: #0b152d;
+  --dark-sidebar-search-section: #04213d;
   --dark-sidebar-search-box-border: #111111;
   --dark-sidebar-docs-name: #dddddd;
   --dark-api-class: #007dce;
