@@ -6,10 +6,10 @@ from watchdog.events import FileSystemEventHandler
 
 
 class EventHandler(FileSystemEventHandler):
-    def __init__(self):
+    def __init__(self) -> None:
         self.last_modified = dt.now()
 
-    def on_any_event(self, event):
+    def on_any_event(self, event) -> None:
         if dt.now() - self.last_modified < timedelta(seconds=1):
             return
         else:
@@ -17,13 +17,13 @@ class EventHandler(FileSystemEventHandler):
 
 
 class Watcher:
-    def __init__(self, source_path, docs_path):
+    def __init__(self, source_path: str, docs_path: str) -> None:
         self.source_path = source_path
         self.docs_path = docs_path
 
         self.observer = Observer()
 
-    def watch(self):
+    def watch(self) -> None:
         path = Path.joinpath(Path(__file__).resolve().parent, self.source_path)
         event_handler = EventHandler()
 
