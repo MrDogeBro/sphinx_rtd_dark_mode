@@ -1,7 +1,8 @@
 from distutils.dir_util import copy_tree, remove_tree
+from distutils.errors import DistutilsFileError
 from os import chdir
 from pathlib import Path
-from subprocess import run as run_cmd, PIPE
+from subprocess import run as run_cmd
 from tempfile import TemporaryDirectory
 from time import sleep
 
@@ -27,21 +28,37 @@ class Builder:
 
         self.in_progress = True
 
-        build_source_path = str(Path.joinpath(self.output_path, "source"))
-        build_docs_path = str(Path.joinpath(self.output_path, "docs"))
+        with TemporaryDirectory() as temp_dir:
+            build_source_path = str(
+                Path.joinpath(Path(temp_dir), "sphinx_rtd_dark_mode")
+            )
+            build_docs_path = str(Path.joinpath(Path(temp_dir), "docs"))
+            build_output_path = str(Path.joinpath(Path(temp_dir), "build"))
+            output_build_path = Path.joinpath(self.output_path, "build")
 
-        remove_tree(self.output_path)
+            if Path(output_build_path).exists():
+                remove_tree(output_build_path)
 
-        copy_tree(self.source_path, build_source_path)
-        copy_tree(self.docs_path, build_docs_path)
+            try:
+                copy_tree(self.source_path, build_source_path)
+                copy_tree(self.docs_path, build_docs_path)
+            except DistutilsFileError:
+                return BuildOutput(
+                    "Error in file copy. You are probably fine to ignore this error and continue as it is most likely a bug.",
+                    1,
+                )
 
-        build_cmd = run_cmd(
-            ["sphinx-build", "docs", "build"],
-            stdout=PIPE,
-            cwd=str(self.output_path),
-        )
+            build_cmd = run_cmd(
+                ["sphinx-build", "docs", "build"], cwd=temp_dir, capture_output=True
+            )
 
-        build_traceback = build_cmd.stdout.decode("utf-8")
+            if build_cmd.returncode > 1:
+                return BuildOutput(
+                    build_cmd.stderr.decode("utf-8"), build_cmd.returncode
+                )
+
+            copy_tree(build_output_path, str(output_build_path))
+
         self.in_progress = False
 
-        return BuildOutput(build_traceback, build_cmd.returncode)
+        return BuildOutput(build_cmd.stdout.decode("utf-8"), build_cmd.returncode)
