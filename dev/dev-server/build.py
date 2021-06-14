@@ -11,14 +11,6 @@ class BuildOutput:
         self.traceback = traceback
         self.status = status
 
-    @property
-    def traceback(self) -> str:
-        return self.traceback
-
-    @property
-    def status(self) -> int:
-        return self.status
-
 
 class Builder:
     def __init__(self, source_path: str, docs_path: str) -> None:
