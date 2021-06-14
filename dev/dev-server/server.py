@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 class Server(BaseHTTPRequestHandler):
-    def do_GET(self):
+    def do_GET(self) -> None:
         if self.path == "/":
             self.path = "index.html"
         elif self.path == "/default/static/404.css":
