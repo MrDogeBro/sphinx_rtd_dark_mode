@@ -3,6 +3,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 from signal import signal, SIGINT
 
+from server import Server
 from watch import Watcher
 
 
@@ -19,16 +20,18 @@ class Main:
         docs_path = Path.joinpath(cwd, args.docs_path)
 
         self.watcher = Watcher(str(source_path), str(docs_path))
+        self.server = Server()
 
         signal(SIGINT, self.stop)
 
+        await self.server.start()
         await self.watcher.start()
 
     def stop(self, signal_received, frame) -> None:
-        loop = asyncio.get_running_loop()
-        loop.create_task(self.async_stop())
+        asyncio.get_running_loop().create_task(self.async_stop())
 
     async def async_stop(self) -> None:
+        await self.server.stop()
         await self.watcher.stop()
         await asyncio.sleep(1)
 
