@@ -45,6 +45,11 @@ class ServerHandler(BaseHTTPRequestHandler):
 
 
 class Server:
-    async def start(self):
-        httpd = HTTPServer(("127.0.0.1", 5000), ServerHandler)
-        httpd.serve_forever()
+    def __init__(self):
+        self.httpd = HTTPServer(("127.0.0.1", 5000), ServerHandler)
+
+    async def start(self) -> None:
+        self.httpd.serve_forever()
+
+    async def stop(self) -> None:
+        self.httpd.shutdown()
