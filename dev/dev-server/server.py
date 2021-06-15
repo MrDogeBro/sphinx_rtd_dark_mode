@@ -1,5 +1,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
+from threading import Thread
 
 
 class ServerHandler(BaseHTTPRequestHandler):
@@ -47,9 +48,11 @@ class ServerHandler(BaseHTTPRequestHandler):
 class Server:
     def __init__(self):
         self.httpd = HTTPServer(("127.0.0.1", 5000), ServerHandler)
+        self.thread = Thread(target=self.httpd.serve_forever)
 
     async def start(self) -> None:
-        self.httpd.serve_forever()
+        self.thread.start()
 
     async def stop(self) -> None:
         self.httpd.shutdown()
+        self.thread.join()
