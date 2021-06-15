@@ -24,7 +24,7 @@ class Builder:
 
     def build(self) -> BuildOutput:
         if self.in_progress:
-            return
+            return BuildOutput("Build already in progress.", 1)
 
         self.in_progress = True
 
@@ -37,7 +37,7 @@ class Builder:
             output_build_path = Path.joinpath(self.output_path, "build")
 
             if Path(output_build_path).exists():
-                remove_tree(output_build_path)
+                remove_tree(str(output_build_path))
 
             try:
                 copy_tree(self.source_path, build_source_path)
