@@ -1,10 +1,11 @@
+from asyncio import run as async_run
 from argparse import ArgumentParser
 from pathlib import Path
 
 from watch import Watcher
 
 
-def main():
+async def main():
     cwd = Path().cwd()
 
     parser = ArgumentParser()
