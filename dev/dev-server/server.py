@@ -10,9 +10,9 @@ class ServerHandler(BaseHTTPRequestHandler):
             self.path = str(
                 Path.joinpath(Path(__file__).resolve().parent, "static/404.css")
             )
-        elif self.path == "/default/static/socket.js":
+        elif self.path == "/default/static/websocket.js":
             self.path = str(
-                Path.joinpath(Path(__file__).resolve().parent, "static/socket.js")
+                Path.joinpath(Path(__file__).resolve().parent, "static/websocket.js")
             )
         else:
             self.path = self.path[1:]
