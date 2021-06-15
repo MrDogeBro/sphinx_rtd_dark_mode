@@ -6,12 +6,14 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 from build import Builder
+from websocket import Websocket
 
 
 class EventHandler(FileSystemEventHandler):
-    def __init__(self, source_path: str, docs_path: str) -> None:
+    def __init__(self, source_path: str, docs_path: str, websocket: Websocket) -> None:
         self.last_modified = dt.now()
         self.builder = Builder(source_path, docs_path)
+        self.websocket = websocket
 
     def on_any_event(self, event) -> None:
         if dt.now() - self.last_modified < timedelta(seconds=1):
@@ -45,11 +47,15 @@ class Watcher:
         self.running = False
 
         self.observer = Observer()
+        self.websocket = Websocket()
 
     async def start(self) -> None:
         self.running = True
         path = Path.joinpath(Path(__file__).resolve().parent, self.source_path)
-        event_handler = EventHandler(self.source_path, self.docs_path)
+        event_handler = EventHandler(self.source_path, self.docs_path, self.websocket)
+
+        loop = asyncio.get_event_loop()
+        loop.run_in_executor(None, self.websocket.start)
 
         self.observer.schedule(event_handler, path, recursive=True)
         self.observer.start()
@@ -57,6 +63,7 @@ class Watcher:
         while self.running:
             await asyncio.sleep(1)
 
+        await self.websocket.stop()
         self.observer.stop()
         self.observer.join()
 
