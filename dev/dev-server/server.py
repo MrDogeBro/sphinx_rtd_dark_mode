@@ -10,6 +10,10 @@ class Server(BaseHTTPRequestHandler):
             self.path = str(
                 Path.joinpath(Path(__file__).resolve().parent, "static/404.css")
             )
+        elif self.path == "/default/static/socket.js":
+            self.path = str(
+                Path.joinpath(Path(__file__).resolve().parent, "static/socket.js")
+            )
         else:
             self.path = self.path[1:]
 
@@ -25,6 +29,11 @@ class Server(BaseHTTPRequestHandler):
                 requested_file = f.read().replace("{REQUESTED_PAGE}", f"/{self.path}")
 
             self.send_response(404)
+
+        if "<head>" in requested_file:
+            requested_file = requested_file.replace("<head>", f"<head><script src=\"default/static/websocket.js\"></script>")
+        else:
+            requested_file = requested_file.replace("<html>", f"<html><head><script src=\"default/static/websocket.js\"></script></head>")
 
         self.end_headers()
         self.wfile.write(bytes(requested_file, "utf-8"))
