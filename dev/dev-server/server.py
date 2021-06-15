@@ -2,7 +2,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 
 
-class Server(BaseHTTPRequestHandler):
+class ServerHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         if self.path == "/":
             self.path = "index.html"
@@ -31,13 +31,20 @@ class Server(BaseHTTPRequestHandler):
             self.send_response(404)
 
         if "<head>" in requested_file:
-            requested_file = requested_file.replace("<head>", f"<head><script src=\"default/static/websocket.js\"></script>")
+            requested_file = requested_file.replace(
+                "<head>", f'<head><script src="default/static/websocket.js"></script>'
+            )
         else:
-            requested_file = requested_file.replace("<html>", f"<html><head><script src=\"default/static/websocket.js\"></script></head>")
+            requested_file = requested_file.replace(
+                "<html>",
+                f'<html><head><script src="default/static/websocket.js"></script></head>',
+            )
 
         self.end_headers()
         self.wfile.write(bytes(requested_file, "utf-8"))
 
 
-httpd = HTTPServer(("127.0.0.1", 5000), Server)
-httpd.serve_forever()
+class Server:
+    async def start(self):
+        httpd = HTTPServer(("127.0.0.1", 5000), ServerHandler)
+        httpd.serve_forever()
