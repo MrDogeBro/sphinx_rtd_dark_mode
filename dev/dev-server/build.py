@@ -43,6 +43,7 @@ class Builder:
                 copy_tree(self.source_path, build_source_path)
                 copy_tree(self.docs_path, build_docs_path)
             except DistutilsFileError:
+                self.in_progress = False
                 return BuildOutput(
                     "Error in file copy. You are probably fine to ignore this error and continue as it is most likely a bug.",
                     1,
@@ -53,6 +54,7 @@ class Builder:
             )
 
             if build_cmd.returncode > 1:
+                self.in_progress = False
                 return BuildOutput(
                     build_cmd.stderr.decode("utf-8"), build_cmd.returncode
                 )
@@ -60,5 +62,4 @@ class Builder:
             copy_tree(build_output_path, str(output_build_path))
 
         self.in_progress = False
-
         return BuildOutput(build_cmd.stdout.decode("utf-8"), build_cmd.returncode)
