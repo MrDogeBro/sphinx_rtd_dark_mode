@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+from datetime import datetime as dt, timedelta
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from threading import Thread
@@ -37,7 +39,7 @@ class ServerHandler(BaseHTTPRequestHandler):
                 with open(adjusted_path if adjusted_path else self.path) as f:
                     requested_file = f.read()
             except UnicodeDecodeError:
-                with open(adjusted_path if adjusted_path else self.path, "rb") as f: # type: ignore[assignment]
+                with open(adjusted_path if adjusted_path else self.path, "rb") as f:  # type: ignore[assignment]
                     # requested_file = f.read()
                     is_bytes = True
 
@@ -69,6 +71,10 @@ class ServerHandler(BaseHTTPRequestHandler):
             return
 
         self.wfile.write(bytes(requested_file, "utf-8"))
+
+    def log_request(self, format, *args) -> None: # type: ignore[override]
+        print(f"{Fore.GREEN}request{Fore.RESET} - {Style.DIM}{self.path} ({format}){Style.RESET_ALL}")
+        return
 
 
 class Server:
