@@ -12,14 +12,10 @@ class ServerHandler(BaseHTTPRequestHandler):
         if self.path == "/":
             self.path = "index.html"
         elif self.path == "/default/static/404.css":
-            self.path = str(
-                Path.joinpath(Path(__file__).resolve().parent, "static/404.css")
-            )
+            self.path = "static/404.css"
             custom_path = True
         elif self.path == "/default/static/websocket.js":
-            self.path = str(
-                Path.joinpath(Path(__file__).resolve().parent, "static/websocket.js")
-            )
+            self.path = "static/websocket.js"
             custom_path = True
         else:
             self.path = self.path[1:]
@@ -27,24 +23,29 @@ class ServerHandler(BaseHTTPRequestHandler):
                 self.path = self.path[: self.path.rfind("?")]
 
         try:
-            adjusted_path = None
+            adjusted_path = self.output_path = Path.joinpath(
+                Path(__file__).resolve().parent, "../.dev-build/build", self.path
+            )
             is_bytes = False
+            is_404 = False
 
-            if not custom_path:
+            if custom_path:
                 adjusted_path = self.output_path = Path.joinpath(
-                    Path(__file__).resolve().parent, "../.dev-build/build", self.path
+                    Path(__file__).resolve().parent, self.path
                 )
 
             try:
-                with open(adjusted_path if adjusted_path else self.path) as f:
+                with open(adjusted_path) as f:
                     requested_file = f.read()
             except UnicodeDecodeError:
-                with open(adjusted_path if adjusted_path else self.path, "rb") as f:  # type: ignore[assignment]
-                    # requested_file = f.read()
+                with open(adjusted_path, 'rb') as f:  # type: ignore[assignment]
+                    requested_file = f.read()
                     is_bytes = True
 
             self.send_response(200)
         except FileNotFoundError:
+            is_404 = True
+
             with open(
                 Path.joinpath(Path(__file__).resolve().parent, "static/404.html")
             ) as f:
@@ -52,7 +53,7 @@ class ServerHandler(BaseHTTPRequestHandler):
 
             self.send_response(404)
 
-        if not is_bytes and self.path.endswith(".html"):
+        if not is_bytes and (self.path.endswith(".html") or is_404):
             if "<head>" in requested_file:
                 requested_file = requested_file.replace(
                     "<head>",
@@ -72,8 +73,10 @@ class ServerHandler(BaseHTTPRequestHandler):
 
         self.wfile.write(bytes(requested_file, "utf-8"))
 
-    def log_request(self, format, *args) -> None: # type: ignore[override]
-        print(f"{Fore.GREEN}request{Fore.RESET} - {Style.DIM}{self.path} ({format}){Style.RESET_ALL}")
+    def log_request(self, format, *args) -> None:  # type: ignore[override]
+        print(
+            f"{Fore.GREEN}request{Fore.RESET} - {Style.DIM}{self.path} ({format}){Style.RESET_ALL}"
+        )
         return
 
 
