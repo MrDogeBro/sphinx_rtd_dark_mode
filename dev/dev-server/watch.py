@@ -37,6 +37,7 @@ class EventHandler(FileSystemEventHandler):
                 f"Traceback:\n\nIt seems that the build did not complete. Please try again."
             )
 
+        asyncio.run(self.websocket.reload_clients())
         print(f"{Fore.MAGENTA}event{Fore.RESET} - build successful")
 
 
