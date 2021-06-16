@@ -16,29 +16,29 @@ class EventHandler(FileSystemEventHandler):
         self.websocket = websocket
 
     def on_any_event(self, event) -> None:
-        if dt.now() - self.last_modified < timedelta(seconds=1):
+        if dt.now()   - self.last_modified < timedelta(seconds=1):
             return
 
         if event.src_path.split("/")[-1].split(".").count("py") > 1:
             return
 
-        print(f"{Fore.CYAN}wait{Fore.RESET}  - building...")
+        print(f"{Fore.CYAN}wait{Fore.RESET}    - building...")
         self.last_modified = dt.now()
         build_output = self.builder.build()
 
         try:
             if build_output.status != 0:
-                print(f"{Fore.RED}error{Fore.RESET} - build failed")
+                print(f"{Fore.RED}error{Fore.RESET}   - build failed")
                 print(f"Traceback:\n{build_output.traceback}")
                 return
         except AttributeError:
-            print(f"{Fore.RED}error{Fore.RESET} - build failed")
+            print(f"{Fore.RED}error{Fore.RESET}   - build failed")
             print(
                 f"Traceback:\n\nIt seems that the build did not complete. Please try again."
             )
 
         asyncio.run(self.websocket.reload_clients())
-        print(f"{Fore.MAGENTA}event{Fore.RESET} - build successful")
+        print(f"{Fore.MAGENTA}event{Fore.RESET}   - build successful")
 
 
 class Watcher:
@@ -61,7 +61,7 @@ class Watcher:
         self.observer.schedule(event_handler, path, recursive=True)
         self.observer.start()
 
-        print(f"{Fore.MAGENTA}event{Fore.RESET} - server started at http://127.0.0.1:5000")
+        print(f"{Fore.MAGENTA}event{Fore.RESET}   - server started at http://127.0.0.1:5000")
 
         while self.running:
             await asyncio.sleep(1)

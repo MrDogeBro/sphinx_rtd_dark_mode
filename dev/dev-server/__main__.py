@@ -10,7 +10,7 @@ from watch import Watcher
 
 class Main:
     async def start(self) -> None:
-        print(f"{Fore.CYAN}wait{Fore.RESET}  - starting server...")
+        print(f"{Fore.CYAN}wait{Fore.RESET}    - starting server...")
         cwd = Path().cwd()
 
         parser = ArgumentParser()

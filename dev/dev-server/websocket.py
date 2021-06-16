@@ -26,7 +26,7 @@ class Websocket:
     async def handler(self, websocket, path) -> None:
         await self.register(websocket)
         print(
-            f"{Fore.MAGENTA}event{Fore.RESET} - websocket connected to {websocket.remote_address[0]}:{websocket.remote_address[1]}"
+            f"{Fore.MAGENTA}event{Fore.RESET}   - websocket connected to {websocket.remote_address[0]}:{websocket.remote_address[1]}"
         )
 
         try:
