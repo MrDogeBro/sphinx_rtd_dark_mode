@@ -1,4 +1,5 @@
 import asyncio
+from colorama import Fore
 from json import dumps as json_dumps
 from typing import Set
 from websockets import serve as websocket_serve
@@ -24,6 +25,9 @@ class Websocket:
 
     async def handler(self, websocket, path) -> None:
         await self.register(websocket)
+        print(
+            f"{Fore.MAGENTA}event{Fore.RESET} - websocket connected to {websocket.remote_address[0]}:{websocket.remote_address[1]}"
+        )
 
         try:
             async for message in websocket:

@@ -61,6 +61,8 @@ class Watcher:
         self.observer.schedule(event_handler, path, recursive=True)
         self.observer.start()
 
+        print(f"{Fore.MAGENTA}event{Fore.RESET} - server started at http://127.0.0.1:5000")
+
         while self.running:
             await asyncio.sleep(1)
 
