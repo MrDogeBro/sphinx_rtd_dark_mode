@@ -14,7 +14,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/MrDogeBro/sphinx_rtd_dark_mode",
     download_url=f"https://github.com/MrDogeBro/sphinx_rtd_dark_mode/archive/v{sphinx_rtd_dark_mode.__version__}.tar.gz",
-    packages=setuptools.find_packages(exclude=["tests*"]),
+    packages=setuptools.find_packages(exclude=["tests"]),
     package_data={
         "sphinx_rtd_dark_mode": [
             "static/dark_mode_css/general.css",
