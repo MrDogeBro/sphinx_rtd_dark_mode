@@ -647,3 +647,18 @@ html[data-theme-enabled='true'] .rst-content table.docutils,
 html[data-theme-enabled='true'] .wy-table-bordered-all {
   border-color: var(--dark-table-border);
 }
+
+html[data-theme='dark'] .rst-content table.docutils caption,
+html[data-theme='dark'] .rst-content table.field-list caption,
+html[data-theme='dark'] .wy-table caption {
+  color: var(--dark-text-color);
+}
+
+html[data-theme='dark'] .wy-menu-vertical li.toctree-l3.current > a,
+html[data-theme='dark']
+  .wy-menu-vertical
+  li.toctree-l3.current
+  li.toctree-l4
+  > a {
+  background-color: var(--dark-sidebar-subselected-bkg);
+}
