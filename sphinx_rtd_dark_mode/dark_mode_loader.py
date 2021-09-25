@@ -31,7 +31,7 @@ class DarkModeLoader:
             self.config.html_theme = "sphinx_rtd_theme"
 
     def set_default_theme(self):
-        default_theme = "dark"
+        default_theme = self.config.default_theme
         default_theme_enabled = "true"
         available_themes = [
             {"name": "dark", "displayName": "Dark"},
@@ -43,6 +43,9 @@ class DarkModeLoader:
         if not self.config.default_dark_mode:
             default_theme = "light"
             default_theme_enabled = "false"
+
+        if not default_theme in [t["name"] for t in available_themes]:
+            raise ValueError(f"The given theme name, {default_theme}, is not a valid theme. Please check the documentation for a list of the availble themes.")
 
         with open(
             Path.joinpath(Path(__file__).resolve().parent, "default_theme.js")
