@@ -45,7 +45,43 @@ class DarkModeLoader:
             default_theme_enabled = "false"
 
         if not default_theme in [t["name"] for t in available_themes]:
-            raise ValueError(f"The given theme name, {default_theme}, is not a valid theme. Please check the documentation for a list of the availble themes.")
+            raise ValueError(
+                f"The given theme name, {default_theme}, is not a valid theme. Please check the documentation for a list of the availble themes."
+            )
+
+        if self.config.theme_customizations:
+            custom_css = ["/* theme customizations */"]
+
+            for custom in self.config.theme_customizations:
+                if not "theme" in custom or not "colors" in custom:
+                    raise ValueError(
+                        f"The `theme` or `colors` keys were not found in the theme customization. Please check the docs for information on formattting."
+                    )
+
+                if not custom["theme"] in [t["name"] for t in available_themes]:
+                    raise ValueError(
+                        f"The given theme name to customize, {default_theme}, is not a valid theme. Please check the documentation for a list of the availble themes."
+                    )
+
+                color_vars = "\n".join(
+                    [c.replace(";", "") + " !important;" for c in custom["colors"]]
+                )
+                nl = "\n"
+
+                custom_css.append(f":root[data-theme='{custom['theme']}'] {{ {nl} {color_vars} {nl} }}"),
+
+            with open(
+                Path.joinpath(Path(__file__).resolve().parent, "load_customizations.js")
+            ) as f:
+                css_js_str = f.read()
+
+            self.app.add_js_file(
+                None,
+                body=css_js_str.replace(
+                    "{customization_styles}",
+                    "\n\n".join(custom_css),
+                ),
+            )
 
         with open(
             Path.joinpath(Path(__file__).resolve().parent, "default_theme.js")
