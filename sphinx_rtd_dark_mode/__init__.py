@@ -18,6 +18,7 @@ from sphinx_rtd_dark_mode.dark_mode_loader import DarkModeLoader
 def setup(app):
     app.add_config_value("default_dark_mode", True, "html", (bool))
     app.add_config_value("default_theme", "dark", "html", (str))
+    app.add_config_value("theme_customizations", [], "html", (list))
 
     app.connect("config-inited", DarkModeLoader().configure)
 
