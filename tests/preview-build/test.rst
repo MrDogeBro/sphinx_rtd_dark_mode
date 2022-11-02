@@ -71,6 +71,9 @@ Test Code Blocks
 ----------------
 
 .. code-block:: python
+    :caption: Python code with emphasized lines
+    :linenos:
+    :emphasize-lines: 8-9
 
     from content_filter import Filter
 
