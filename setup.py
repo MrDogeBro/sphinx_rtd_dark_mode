@@ -27,6 +27,7 @@ setuptools.setup(
     license=sphinx_rtd_dark_mode.__license__,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
+        "Framework :: Sphinx :: Extension",
         "Natural Language :: English",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
