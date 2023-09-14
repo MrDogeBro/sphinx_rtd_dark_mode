@@ -96,6 +96,11 @@ Test Code Blocks
     # ignores words in default filter
 
 
+.. code-block:: sh
+
+    export TESTING=16
+
+
 .. code-block:: json
 
     {
