@@ -54,6 +54,10 @@ html[data-theme='dark'] .highlight .c1 {
   color: #686868;
 }
 
+html[data-theme='dark'] .highlight .hll {
+  background-color: #002c4d;
+}
+
 html[data-theme='dark'] .rst-content div[class^='highlight'] {
   border-color: #1a1a1a;
 }
