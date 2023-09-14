@@ -31,6 +31,10 @@ html[data-theme='dark'] .highlight .nb {
   color: #8bb8df;
 }
 
+html[data-theme='dark'] .highlight .nv {
+  color: #40ffff;
+}
+
 html[data-theme='dark'] .highlight .kn,
 html[data-theme='dark'] .highlight .kc,
 html[data-theme='dark'] .highlight .k {
