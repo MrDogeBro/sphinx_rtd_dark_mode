@@ -272,6 +272,7 @@ html[data-theme='dark'] .wy-alert.wy-alert-success .wy-alert-title {
   background-color: #006a56;
 }
 
+html[data-theme='dark'] .rst-content .admonition,
 html[data-theme='dark'] .rst-content .note,
 html[data-theme='dark'] .rst-content .seealso,
 html[data-theme='dark'] .rst-content .wy-alert-info.admonition,
@@ -288,6 +289,7 @@ html[data-theme='dark'] .wy-alert.wy-alert-info {
   background-color: #002c4d;
 }
 
+html[data-theme='dark'] .rst-content .admonition .admonition-title,
 html[data-theme='dark'] .rst-content .note .admonition-title,
 html[data-theme='dark'] .rst-content .note .wy-alert-title,
 html[data-theme='dark'] .rst-content .seealso .admonition-title,

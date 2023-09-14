@@ -37,6 +37,10 @@ Test Directives
 
     Testing
 
+.. admonition:: Admonition
+
+    Testing
+
 .. rubric:: Testing
 
 .. centered:: Testing
