@@ -118,3 +118,8 @@ Test Code Blocks
             }
         ]
     }
+
+Test Roles
+----------
+
+Testing 123 :guilabel:`Test of guilabel`
